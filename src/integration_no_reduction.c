@@ -23,21 +23,22 @@ int main(int argc, char *argv[])
     print_inputs(num_steps, num_threads);
     double step = 1.0 / (double)num_steps;
     double start = omp_get_wtime();
-    #pragma omp parallel for private(x) reduction(+:sum)
+    #pragma omp parallel for private(x) 
     for (i = 0; i < num_steps; i++)
     {
         x = (i + 0.5) * step;
+        #pragma omp atomic
         sum = sum + 4.0 / (1.0 + x * x);
     }
     pi = step * sum;
     printf("---Resultados---\n");
-    printf("Numero Pi: %1.15lf\n", pi);
-    printf("Tiempo de ejecucion: %1f", omp_get_wtime() - start);
+    printf("Numero Pi: %1f\n", pi);
+    printf("Tiempo de ejecucion: %1.15lf", omp_get_wtime() - start);
 }
 
 void print_inputs(double num_steps, int num_threads) {
-    printf("---Calculo numero Pi---\n");
-    printf("Threads: %d\n", num_threads);
-    printf("Pasos: %f\n", num_steps);
-    printf("Variante del problema: utilizando \"omp parallel for\" en conjunto con \"omp reduction\"\n");
+    printf("---Cálculo número Pi---\n");
+    printf("Threads: %d", num_threads);
+    printf("Pasos: %f", num_steps);
+    printf("Variante del problema: cualquier directiva excepto \"omp reduction\"");
 }
