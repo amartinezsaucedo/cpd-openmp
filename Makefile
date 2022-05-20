@@ -5,10 +5,12 @@
 #  Maintenance targets:
 #
 #
-#    all         - (default target) make sure everything's compiled
-#    clean       - clean out all compiled object and executable files
-#    integration - compile just the integration program
-#    matrix      - compile just the matrix program.
+#    all         				- (default target) make sure everything's compiled
+#    clean       				- clean out all compiled object and executable files
+#    integration 				- compile just the integration program
+#    integration_no_reduction 	- compile just the integration_no_reduction program
+#    matrix      				- compile just the matrix program.
+#    matrix_no_reduction		- compile just the matrix_no_reduction program.
 #
 #
 
@@ -18,7 +20,7 @@ OBJ = obj/
 SRC = src/
 BIN = bin/
 
-EXECUTABLES = integration matrix
+EXECUTABLES = integration integration_no_reduction matrix matrix_no_reduction
 
 GCC = gcc
 
@@ -59,6 +61,14 @@ integration: $(OBJ)integration.o
 	mkdir -p $(BIN)
 	$(GCC) $(LDFLAGS) -o $(BIN)integration $(OBJ)integration.o 
 
+integration_no_reduction: $(OBJ)integration_no_reduction.o
+	mkdir -p $(BIN)
+	$(GCC) $(LDFLAGS) -o $(BIN)integration_no_reduction $(OBJ)integration_no_reduction.o 
+
 matrix: $(OBJ)matrix.o
 	mkdir -p $(BIN)
 	$(GCC) $(LDFLAGS) -o $(BIN)matrix $(OBJ)matrix.o 
+
+matrix_no_reduction: $(OBJ)matrix_no_reduction.o
+	mkdir -p $(BIN)
+	$(GCC) $(LDFLAGS) -o $(BIN)matrix_no_reduction $(OBJ)matrix_no_reduction.o 
