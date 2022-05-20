@@ -31,14 +31,15 @@ int main(int argc, char *argv[])
         sum = sum + 4.0 / (1.0 + x * x);
     }
     pi = step * sum;
+    printf("Tiempo de ejecucion: %1.15lf\n", omp_get_wtime() - start);
     printf("---Resultados---\n");
-    printf("Numero Pi: %1f\n", pi);
-    printf("Tiempo de ejecucion: %1.15lf", omp_get_wtime() - start);
+    printf("Numero Pi: %1.15lf\n", pi);
+    return 0;
 }
 
 void print_inputs(double num_steps, int num_threads) {
     printf("---Cálculo número Pi---\n");
-    printf("Threads: %d", num_threads);
-    printf("Pasos: %f", num_steps);
-    printf("Variante del problema: cualquier directiva excepto \"omp reduction\"");
+    printf("Threads: %d\n", num_threads);
+    printf("Pasos: %f\n", num_steps);
+    printf("Variante del problema: cualquier directiva excepto \"omp reduction\"\n");
 }

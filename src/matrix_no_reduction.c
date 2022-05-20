@@ -54,14 +54,15 @@ struct matrix *multiply_matrices(const struct matrix *matrix_a, const struct mat
     }
     struct matrix *result_matrix = create_matrix(matrix_a->rows, matrix_b->columns);
     int i, j, k, l, result;
-    #pragma omp parallel for private(i, j, k, l) reduction(+: result) collapse(2) // i es por defecto privada
+    #pragma omp parallel for private(i, j, k, l) collapse(2)
     for (i = 0; i < matrix_a->rows; i++)
     {
         for (j = 0; j < matrix_b->columns; j++)
         {
             result = 0;
-            for (k = 0, l = 0; k < matrix_a->columns && l < matrix_b->rows; k++, l++)
+            for (k = 0, l = 0, result = 0; k < matrix_a->columns && l < matrix_b->rows; k++, l++)
             {
+                #pragma omp atomic
                 result += *(*(matrix_a->matrix + i) + k) * *(*(matrix_b->matrix + l) + j);
                 *(*(result_matrix->matrix + i) + j) = result;
             }
@@ -115,5 +116,5 @@ void print_inputs(int num_threads, int matrix_a_rows, int matrix_a_columns, int 
     printf("Threads: %d\n", num_threads);
     printf("Dimension matriz A: %dx%d\n", matrix_a_rows, matrix_a_columns);
     printf("Dimension matriz B: %dx%d\n", matrix_b_rows, matrix_b_columns);
-    printf("Variante del problema: utilizando \"omp parallel for\" en conjunto con \"omp reduction\"\n");
+    printf("Variante del problema: cualquier directiva excepto \"omp reduction\"\n");
 }
