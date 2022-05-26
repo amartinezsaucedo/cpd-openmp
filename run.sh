@@ -5,6 +5,8 @@ THREADS=$2
 ARG_1=$3
 ARG_2=$4
 ARG_3=$5
+ARG_4=$6
+ARG_5=$7
 
 MATRIX_A_FILENAME="data/matrix_a_${ARG_1}x${ARG_2}.txt"
 MATRIX_B_FILENAME="data/matrix_b_${ARG_2}x${ARG_3}.txt"
@@ -27,11 +29,11 @@ if [[ $PROGRAM == matrix* ]]; then
             printf "\n"
         done >&4
     fi
-    ARGS_STRING="data/matrix_a_${ARG_1}x${ARG_2}.txt data/matrix_b_${ARG_2}x${ARG_3}.txt"
+    ARGS_STRING="data/matrix_a_${ARG_1}x${ARG_2}.txt data/matrix_b_${ARG_2}x${ARG_3}.txt ${ARG_4} ${ARG_5}"
 fi
 
 if [[ $PROGRAM == integration* ]]; then
-    ARGS_STRING=$ARG_1
+    ARGS_STRING="${ARG_1} ${ARG_2} ${ARG_3}"
 fi
 
-./bin/$PROGRAM.exe $THREADS $ARGS_STRING | tee /dev/tty | echo $PROGRAM $THREADS $ARG_1 $ARG_2 $ARG_3 $(sed -n 's/.*Tiempo de ejecucion://p') >>results/results_$PROGRAM.txt
+./bin/$PROGRAM.exe $THREADS $ARGS_STRING | tee /dev/tty | echo $PROGRAM $THREADS $ARG_1 $ARG_2 $ARG_3 $ARG_4 $ARG_5 $(sed -n 's/.*Tiempo de ejecucion://p') >>results/results_$PROGRAM.txt
