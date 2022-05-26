@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     static long num_steps;
     if (argc != 3)
     {
-        printf("Uso : integration.exe <num_threads> <num_steps>\n");
+        printf("Uso : integration_no_reduction.exe <num_threads> <num_steps>\n");
         exit(-1);
     }
     num_threads = atoi(argv[NUM_THREADS_ARG]);

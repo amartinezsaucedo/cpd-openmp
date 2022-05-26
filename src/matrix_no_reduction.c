@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
     char *matrix_a_filename, *matrix_b_filename;
     if (argc != 4)
     {
-        printf("Uso : matrix.exe <num_threads> <matrix_a_filename> <matrix_b_filename>\n");
+        printf("Uso : matrix_no_reduction.exe <num_threads> <matrix_a_filename> <matrix_b_filename>\n");
         exit(-1);
     }
     num_threads = atoi(argv[NUM_THREADS_ARG]);
