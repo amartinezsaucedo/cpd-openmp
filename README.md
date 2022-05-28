@@ -77,7 +77,7 @@ run.sh <<programa>> <<número_de_threads>> <<...parámetros_programa>>
 ```
 
 ### Ejecutar en lote
-El script `test.sh` permite ejecutar `x` cantidad de veces el mismo programa con la misma entrada (para obtener un tiempo de ejecución promedio estadísticamente significativo ) y distintos threads (para analizar cómo se comporta la performance conforme el nivel de paralelismo aumenta).
+El script `test.sh` permite ejecutar `x` cantidad de veces el mismo programa con la misma entrada (para obtener un tiempo de ejecución promedio estadísticamente significativo) y distintos threads (para analizar cómo se comporta la performance conforme el nivel de paralelismo aumenta).
 
 ``` sh
 test.sh <<programa>> <<número_de_ejecuciones>> <<cantidad_máxima_de_threads>> <<programa>> <<...parámetros_programa>>
