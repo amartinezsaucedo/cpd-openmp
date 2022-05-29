@@ -19,6 +19,7 @@ if [[ $PROGRAM == matrix* ]]; then
             for j in $(seq $ARG_2); do printf "$(((RANDOM % 100) + 1)) "; done
             printf "\n"
         done >&3
+        exec 3<&-
     fi
 
     if [[ ! -e $MATRIX_B_FILENAME ]]; then
@@ -28,6 +29,7 @@ if [[ $PROGRAM == matrix* ]]; then
             for j in $(seq $ARG_3); do printf "$(((RANDOM % 100) + 1)) "; done
             printf "\n"
         done >&4
+        exec 4<&-
     fi
     ARGS_STRING="data/matrix_a_${ARG_1}x${ARG_2}.txt data/matrix_b_${ARG_2}x${ARG_3}.txt ${ARG_4} ${ARG_5}"
 fi
