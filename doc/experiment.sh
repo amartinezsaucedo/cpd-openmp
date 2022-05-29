@@ -1,3 +1,5 @@
+cd ..
+
 sh ./test.sh 50 50 matrix 2 2 3
 sh ./test.sh 50 50 matrix 3 4 5
 sh ./test.sh 50 50 matrix 5 7 9
