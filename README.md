@@ -5,6 +5,14 @@ Repositorio correspondiente al trabajo práctico sobre OpenMP de la materia Comp
 
 Para mantener la simplicidad del código, cada versión paralela de cada problema se desarrolló en un archivo independiente.
 
+### Estructura del proyecto
+El presente proyecto está organizado en las siguientes carpetas:
+
+- `data`: contiene los archivos de matrices generados por el script `test.sh` para que los programas de multiplicación de matrices utilicen como entrada.
+- `doc`: contiene la documentación del proyecto (informe final).
+- `results`: contiene los resultados crudos y procesados de los experimentos, junto con notebooks para el análisis de los resultados
+- `src`: contiene el código fuente de los distintos programas.
+
 ### Versiones disponibles
 
 Cálculo de número Pi
